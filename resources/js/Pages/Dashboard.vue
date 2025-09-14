@@ -40,7 +40,7 @@
                             class="border w-full mr-2 border-black pl-10 rounded-lg" />
                         <span v-if="activeTab === 'traveler'" class="absolute left-3 top-3">🔍</span>
                         <button @click="addListing" v-if="activeTab === 'owner'"
-                            class="bg-gray-300 rounded-lg border-black px-6 py-2 hover:bg-gray-400 font-medium">
+                            class="bg-gray-300 rounded-lg border border-black px-6 py-2 hover:bg-gray-400 font-medium">
                             ➕ Add New Listing
                         </button>
                     </div>
@@ -52,40 +52,36 @@
 
                         <!-- Search Results Table -->
                         <div v-if="filteredItems.length > 0">
-                            <table class="w-full bg-white rounded-t-lg">
+                            <table class="w-full bg-white rounded-lg">
                                 <thead>
-                                    <tr class="bg-gray-100 border-b ">
+                                    <tr class="bg-gray-100 border-b">
                                         <th class="text-left py-3 rounded-t-lg px-4 text-sm font-medium text-gray-600 cursor-pointer"
                                             @click="sortBy('title')">
-                                            Title <span v-if="sortField === 'title'">{{ sortDirection === 'asc' ? '▲' :
-                                                '▼' }}</span>
+                                            Title <span v-if="sortField === 'title'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
                                         </th>
                                         <th class="text-left py-3 px-4 text-sm font-medium text-gray-600 cursor-pointer"
                                             @click="sortBy('type')">
-                                            Type <span v-if="sortField === 'type'">{{ sortDirection === 'asc' ? '▲' :
-                                                '▼' }}</span>
+                                            Type <span v-if="sortField === 'type'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
                                         </th>
                                         <th class="text-left py-3 px-4 text-sm font-medium text-gray-600 cursor-pointer"
                                             @click="sortBy('area')">
-                                            Area <span v-if="sortField === 'area'">{{ sortDirection === 'asc' ? '▲' :
-                                                '▼' }}</span>
+                                            Area <span v-if="sortField === 'area'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
                                         </th>
-                                        <th class="text-left py-3 px-4 text-sm font-medium text-gray-600 cursor-pointer"
+                                        <th class="text-left py-3 px-4 text-sm rounded-t-lg font-medium text-gray-600 cursor-pointer"
                                             @click="sortBy('capacity')">
-                                            Capacity <span v-if="sortField === 'capacity'">{{ sortDirection === 'asc' ?
-                                                '▲' : '▼' }}</span>
+                                            Capacity <span v-if="sortField === 'capacity'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr v-for="(item, index) in filteredItems" :key="item.id"
                                         :class="index % 2 === 0 ? 'bg-white' : 'bg-blue-50'"
-                                        class="hover:bg-blue-100 border-b border-gray-200">
-                                        <td class="py-3 px-4 text-sm text-blue-600">{{ item.title }}</td>
+                                        class="hover:bg-blue-100 border-b  border-gray-200">
+                                        <td class="py-3 px-4 text-sm text-blue-600 rounded-b-lg ">{{ item.title }}</td>
                                         <td class="py-3 px-4 text-sm text-gray-600">{{ item.item_type?.name || 'N/A' }}
                                         </td>
                                         <td class="py-3 px-4 text-sm text-gray-600">{{ item.area?.name || 'N/A' }}</td>
-                                        <td class="py-3 px-4 text-sm text-gray-600">{{ item.capacity }}</td>
+                                        <td class="py-3 px-4 text-sm text-gray-600 rounded-b-lg ">{{ item.capacity }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -103,30 +99,26 @@
 
                         <!-- User's Listings Table -->
                         <div v-if="userItems.length > 0">
-                            <table class="w-full bg-white">
+                            <table class="w-full bg-white rounded-lg">
                                 <thead>
-                                    <tr class="bg-gray-100 border-b">
-                                        <th class="text-left py-3 px-4 text-sm font-medium text-gray-600 cursor-pointer"
+                                    <tr class="bg-gray-100 border-b rounded-lg">
+                                        <th class="text-left py-3 px-4 text-sm rounded-t-lg font-medium text-gray-600 cursor-pointer"
                                             @click="sortBy('title')">
-                                            Title <span v-if="sortField === 'title'">{{ sortDirection === 'asc' ? '▲' :
-                                                '▼' }}</span>
+                                            Title <span v-if="sortField === 'title'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
                                         </th>
                                         <th class="text-left py-3 px-4 text-sm font-medium text-gray-600 cursor-pointer"
                                             @click="sortBy('type')">
-                                            Type <span v-if="sortField === 'type'">{{ sortDirection === 'asc' ? '▲' :
-                                                '▼' }}</span>
+                                            Type <span v-if="sortField === 'type'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
                                         </th>
                                         <th class="text-left py-3 px-4 text-sm font-medium text-gray-600 cursor-pointer"
                                             @click="sortBy('area')">
-                                            Area <span v-if="sortField === 'area'">{{ sortDirection === 'asc' ? '▲' :
-                                                '▼' }}</span>
+                                            Area <span v-if="sortField === 'area'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
                                         </th>
                                         <th class="text-left py-3 px-4 text-sm font-medium text-gray-600 cursor-pointer"
                                             @click="sortBy('capacity')">
-                                            Capacity <span v-if="sortField === 'capacity'">{{ sortDirection === 'asc' ?
-                                                '▲' : '▼' }}</span>
+                                            Capacity <span v-if="sortField === 'capacity'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
                                         </th>
-                                        <th class="text-left py-3 px-4 text-sm font-medium text-gray-600">Actions</th>
+                                        <th class="text-left py-3 px-4 text-sm font-medium text-gray-600 rounded-t-lg">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -138,7 +130,7 @@
                                         </td>
                                         <td class="py-3 px-4 text-sm text-gray-600">{{ item.area?.name || 'N/A' }}</td>
                                         <td class="py-3 px-4 text-sm text-gray-600">{{ item.capacity }}</td>
-                                        <td class="py-3 px-4 text-sm">
+                                        <td class="py-3 px-4 text-sm rounded-b-lg">
                                             <button @click="editListing(item)"
                                                 class="text-blue-600 underline hover:text-blue-800">
                                                 Edit Details
@@ -193,7 +185,7 @@
 
     // Computed properties
     const filteredItems = computed(() => {
-        let items = allItems.value
+        let items = [...allItems.value] // Create a copy to avoid mutating the original
 
         // Filter by search query
         if (searchQuery.value) {
@@ -206,7 +198,7 @@
             )
         }
 
-        // Sort items
+        // Sort items (now safe because we're sorting a copy)
         items.sort((a, b) => {
             let aVal = a[sortField.value]
             let bVal = b[sortField.value]

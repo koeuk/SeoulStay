@@ -190,10 +190,9 @@
                         <div v-show="activeTab === 'amenities'" class="space-y-4">
                             <h3 class="text-lg font-bold mb-4">Choose Available Amenities:</h3>
 
-                            <div class="border rounded-lg" style="width: 400px;">
+                            <div class="border rounded-lg" >
                                 <div class="bg-gray-200 rounded-t-lg p-2 flex justify-between items-center">
                                     <span class="font-medium">Amenity</span>
-                                    <span class="text-xl">▲</span>
                                 </div>
                                 <div class="max-h-48 overflow-y-auto">
                                     <label v-for="amenity in amenities" :key="amenity.id"
@@ -212,36 +211,36 @@
                             <h3 class="text-lg font-bold mb-4">Specify the distance from each close by attraction and
                                 the time it takes to get to them:</h3>
 
-                            <div class="overflow-x-auto">
-                                <table class="w-full border rounded-lg border-black">
+                            <div class="overflow-x-auto rounded-lg">
+                                <table class="w-full rounded-lg">
                                     <thead>
-                                        <tr class="bg-gray-200">
-                                            <th class="border p-2 text-left">Attraction</th>
+                                        <tr class="bg-gray-200 rounded-lg">
+                                            <th class="border p-2 text-left rounded-t-lg">Attraction</th>
                                             <th class="border p-2 text-left">Area</th>
                                             <th class="border p-2 text-left">Distance (km)</th>
                                             <th class="border p-2 text-left">On Foot (minutes)</th>
                                             <th class="border p-2 text-left">By Car (minutes)</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr v-for="attraction in attractions" :key="attraction.id">
-                                            <td class="border p-2">{{ attraction.name }}</td>
+                                    <tbody class="rounded-lg">
+                                        <tr v-for="attraction in attractions" :key="attraction.id" class="rounded-lg">
+                                            <td class="border rounded-b-lg p-2">{{ attraction.name }}</td>
                                             <td class="border p-2">{{ attraction.area?.name }}</td>
                                             <td class="border p-2">
                                                 <input v-model.number="getAttractionData(attraction.id).distance"
                                                     type="number" step="0.1" min="0"
-                                                    class="w-full border border-gray-300 p-1"
+                                                    class="w-full border rounded-lg border-gray-300 p-1"
                                                     @input="updateAttraction(attraction.id, 'distance', $event.target.value)" />
                                             </td>
                                             <td class="border p-2">
                                                 <input
                                                     v-model.number="getAttractionData(attraction.id).duration_on_foot"
-                                                    type="number" min="0" class="w-full border border-gray-300 p-1"
+                                                    type="number" min="0" class="w-full border rounded-lg border-gray-300 p-1"
                                                     @input="updateAttraction(attraction.id, 'duration_on_foot', $event.target.value)" />
                                             </td>
-                                            <td class="border p-2">
+                                            <td class="border p-2 rounded-b-lg">
                                                 <input v-model.number="getAttractionData(attraction.id).duration_by_car"
-                                                    type="number" min="0" class="w-full border border-gray-300 p-1"
+                                                    type="number" min="0" class="w-full border rounded-lg border-gray-300 p-1"
                                                     @input="updateAttraction(attraction.id, 'duration_by_car', $event.target.value)" />
                                             </td>
                                         </tr>

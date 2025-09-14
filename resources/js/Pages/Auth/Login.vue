@@ -8,7 +8,7 @@
                 <!-- Main Container -->
                 <div class="bg-white/10 backdrop-blur-md rounded-2xl shadow-xl border p-8">
                     <!-- Header -->
-                    <div class="text-start mb-6 pb-4 border-b border-white/20">
+                    <div class="text-start mb-6 pb-4 border-b-3 border border-white/20">
                         <h1 class="text-2xl font-bold ">Seoul Stay - Welcome</h1>
                     </div>
 

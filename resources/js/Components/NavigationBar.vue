@@ -4,7 +4,7 @@
             <div class="flex justify-between items-center h-16">
                 <!-- Logo Section -->
                 <div class="flex items-center">
-                    <Link href="/" class="flex items-center">
+                    <Link  class="flex items-center">
                     <div
                         class=" text-white  px-4 py-2 rounded font-bold text-lg ">
                         Seoul Stay

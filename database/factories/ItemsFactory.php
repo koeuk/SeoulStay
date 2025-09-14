@@ -22,22 +22,12 @@ class ItemsFactory extends Factory
     {
         $koreanPropertyNames = [
             'Seoul Garden House', 'Hanok Traditional Stay', 'Modern Seoul Apartment',
-            'Gangnam Luxury Condo', 'Hongdae Artist Loft', 'Myeongdong Central Hotel',
-            'Itaewon Global Residence', 'Jongno Cultural House', 'Yeouido River View',
-            'Dongdaemun Design Studio', 'Insadong Heritage Home', 'Seocho Premium Suite',
-            'Mapo Creative Space', 'Songpa Family Villa', 'Jung-gu Business Hotel',
-            'Yongsan International House', 'Seodaemun University Lodge', 'Nowon Cozy Home',
-            'Gangbuk Mountain View', 'Seoungbuk Quiet Retreat'
+            'Gangnam Luxury Condo',
         ];
 
         $koreanAddresses = [
             '123 Gangnam-daero, Gangnam-gu', '456 Hongik-ro, Mapo-gu', '789 Myeongdong-gil, Jung-gu',
-            '321 Itaewon-ro, Yongsan-gu', '654 Jongno-gu', '987 Yeouido-dong, Yeongdeungpo-gu',
-            '147 Dongdaemun-ro, Dongdaemun-gu', '258 Insadong-gil, Jongno-gu', '369 Seocho-daero, Seocho-gu',
-            '741 Mapo-daero, Mapo-gu', '852 Songpa-daero, Songpa-gu', '963 Jung-gu', 
-            '159 Yongsan-gu', '357 Seodaemun-ro, Seodaemun-gu', '486 Nowon-ro, Nowon-gu',
-            '624 Gangbuk-ro, Gangbuk-gu', '795 Seongbuk-ro, Seongbuk-gu', '138 Dobong-ro, Dobong-gu',
-            '246 Eunpyeong-ro, Eunpyeong-gu', '579 Gangseo-daero, Gangseo-gu'
+            '321 Itaewon-ro, Yongsan-gu', 
         ];
 
         return [
@@ -45,7 +35,7 @@ class ItemsFactory extends Factory
             'user_id' => User::inRandomOrder()->first()?->id ?? 1,
             'area_id' => Areas::inRandomOrder()->first()?->id ?? 1,
             'item_type_id' => ItemType::inRandomOrder()->first()?->id ?? 1,
-            'title' => $this->faker->unique()->randomElement($koreanPropertyNames),
+            'title' => $this->faker->randomElement($koreanPropertyNames) . ' ' . $this->faker->numberBetween(1, 999),
             'capacity' => $this->faker->numberBetween(1, 10),
             'number_of_beds' => $this->faker->numberBetween(1, 6),
             'number_of_bedrooms' => $this->faker->numberBetween(1, 5),

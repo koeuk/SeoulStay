@@ -24,14 +24,14 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Seed base data first (independent tables)
-        $userTypes = UserType::factory(20)->create();
-        $areas = Areas::factory(22)->create();
-        $itemTypes = ItemType::factory(20)->create();
-        $amenities = Amenities::factory(20)->create();
-        $attractions = Attractions::factory(20)->create();
+        $userTypes = UserType::factory(4)->create();
+        $areas = Areas::factory(4)->create();
+        $itemTypes = ItemType::factory(4)->create();
+        $amenities = Amenities::factory(4)->create();
+        $attractions = Attractions::factory(4)->create();
 
         // Seed users with relationships
-        $users = User::factory(20)->create();
+        $users = User::factory(4)->create();
 
         // Create admin user if not exists
         User::firstOrCreate(
@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Koeuk',
                 'full_name' => 'Koeuk Admin',
                 'username' => 'koeuk.admin',
-                'password' => Hash::make('password'),
+                'password' => '12345678',
                 'user_type_id' => $userTypes->where('name', 'Administrator')->first()?->id ?? $userTypes->first()->id,
                 'gender' => 'Male',
                 'birth_date' => '1990-01-01',
@@ -54,9 +54,9 @@ class DatabaseSeeder extends Seeder
         $items = Items::factory(20)->create();
 
         // Seed pivot table relationships
-        // Each item gets 3-8 random amenities
+        // Each item gets 2-4 random amenities (max available is 4)
         foreach ($items as $item) {
-            $randomAmenities = $amenities->random(rand(3, 8));
+            $randomAmenities = $amenities->random(rand(2, min(4, $amenities->count())));
             foreach ($randomAmenities as $amenity) {
                 ItemAmenities::factory()->create([
                     'item_id' => $item->id,
@@ -65,9 +65,9 @@ class DatabaseSeeder extends Seeder
             }
         }
 
-        // Each item gets 2-5 nearby attractions
+        // Each item gets 2-4 nearby attractions (max available is 4)
         foreach ($items as $item) {
-            $randomAttractions = $attractions->random(rand(2, 5));
+            $randomAttractions = $attractions->random(rand(2, min(4, $attractions->count())));
             foreach ($randomAttractions as $attraction) {
                 ItemAttractions::factory()->create([
                     'item_id' => $item->id,

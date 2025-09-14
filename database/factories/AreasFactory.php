@@ -19,11 +19,6 @@ class AreasFactory extends Factory
     {
         $seoulAreas = [
             'Dobong-gu', 'Dongdaemun-gu', 'Eunpyeong-gu', 'Gangbuk-gu',
-            'Gangdong-gu', 'Gangnam-gu', 'Gangseo-gu', 'Geumcheon-gu',
-            'Guro-gu', 'Jongno-gu', 'Jung-gu', 'Jungnang-gu',
-            'Mapo-gu', 'Nowon-gu', 'Seocho-gu', 'Seodaemun-gu',
-            'Seongbuk-gu', 'Seongdong-gu', 'Songpa-gu', 'Yangcheon-gu',
-            'Yeongdeungpo-gu', 'Yongsan-gu'
         ];
 
         return [

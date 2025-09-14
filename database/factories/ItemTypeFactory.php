@@ -19,10 +19,6 @@ class ItemTypeFactory extends Factory
     {
         $itemTypes = [
             'Private room', 'Entire place', 'Shared room', 'Hotel room',
-            'Studio apartment', 'One bedroom', 'Two bedroom', 'Three bedroom',
-            'Penthouse', 'Loft', 'Villa', 'Townhouse',
-            'Guesthouse', 'Hostel', 'Boutique hotel', 'Resort',
-            'Serviced apartment', 'Executive suite', 'Family room', 'Luxury suite'
         ];
 
         return [

@@ -26,10 +26,7 @@ class UserFactory extends Factory
     {
         $koreanNames = [
             ['first' => 'Min', 'last' => 'Kim'], ['first' => 'Ji', 'last' => 'Lee'], ['first' => 'Hyun', 'last' => 'Park'],
-            ['first' => 'Soo', 'last' => 'Choi'], ['first' => 'Jun', 'last' => 'Jung'], ['first' => 'Young', 'last' => 'Kang'],
-            ['first' => 'Hye', 'last' => 'Yoon'], ['first' => 'Dong', 'last' => 'Jang'], ['first' => 'Sung', 'last' => 'Lim'],
-            ['first' => 'Mi', 'last' => 'Han'], ['first' => 'Jae', 'last' => 'Oh'], ['first' => 'Eun', 'last' => 'Shin'],
-            ['first' => 'Kyung', 'last' => 'Kwon'], ['first' => 'Se', 'last' => 'Yu'], ['first' => 'Won', 'last' => 'Song']
+            ['first' => 'Soo', 'last' => 'Choi'], ['first' => 'Jun', 'last' => 'Jung'],
         ];
 
         $name = $this->faker->randomElement($koreanNames);

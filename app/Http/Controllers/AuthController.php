@@ -32,7 +32,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
-            
+
             return redirect()->intended('/dashboard');
         }
 
@@ -58,8 +58,8 @@ class AuthController extends Controller
             'terms' => 'accepted',
         ]);
 
-        $defaultUserType = UserType::where('name', 'Traveler')->first() 
-                          ?? UserType::first();
+        $defaultUserType = UserType::where('name', 'Traveler')->first()
+            ?? UserType::first();
 
         $user = User::create([
             'uuid' => Str::uuid(),
@@ -85,7 +85,7 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        
+
         return redirect('/');
     }
 }

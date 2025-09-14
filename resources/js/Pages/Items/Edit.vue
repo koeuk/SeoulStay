@@ -1,8 +1,13 @@
 <template>
-    <div class="min-h-screen p-4" style="background: linear-gradient(135deg, #1a4a3a 0%, #0f2b24 100%); background-image: 
+    <div class="min-h-screen" style="background: linear-gradient(135deg, #1a4a3a 0%, #0f2b24 100%); background-image: 
         linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), 
         linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); 
         background-size: 50px 50px;">
+        
+        <!-- Navigation Bar -->
+        <NavigationBar />
+        
+        <div class="p-4 mt-8">
         <div class="bg-white border-4 border-black max-w-6xl mx-auto">
             <!-- Header -->
             <div class="border-b-2 border-black p-4">
@@ -271,12 +276,14 @@
                 </button>
             </div>
         </div>
+        </div>
     </div>
 </template>
 
 <script setup>
     import { ref, reactive, onMounted } from 'vue'
     import { useForm, Link } from '@inertiajs/vue3'
+    import NavigationBar from '@/Components/NavigationBar.vue'
 
     const props = defineProps({
         item: Object,

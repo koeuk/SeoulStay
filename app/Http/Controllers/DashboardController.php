@@ -18,6 +18,7 @@ class DashboardController extends Controller
         
         // Get all items with relationships for traveler tab
         $allItems = Items::with(['area', 'itemType', 'user', 'amenities', 'attractions'])
+            ->where('user_id', $user->id)
             ->get();
         
         // Get user's own items for owner/manager tab

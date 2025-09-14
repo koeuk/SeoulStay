@@ -53,8 +53,9 @@ class ItemController extends Controller
             'approximate_address' => 'required|string',
             'exact_address' => 'required|string',
             'description' => 'required|string',
+            'host_rules' => 'nullable|string',
             'minimum_nights' => 'required|integer|min:1',
-            'maximum_nights' => 'required|integer|min:1',
+            'maximum_nights' => 'required|integer|min:1|gte:minimum_nights',
             'amenities' => 'array',
             'amenities.*' => 'exists:amenities,id',
             'attractions' => 'array',
@@ -77,6 +78,7 @@ class ItemController extends Controller
             'approximate_address' => $request->approximate_address,
             'exact_address' => $request->exact_address,
             'description' => $request->description,
+            'host_rules' => $request->host_rules,
             'minimum_nights' => $request->minimum_nights,
             'maximum_nights' => $request->maximum_nights,
             'attributes' => json_encode($request->get('attributes', [])),
@@ -110,8 +112,9 @@ class ItemController extends Controller
         return redirect()->route('dashboard')->with('success', 'Item created successfully!');
     }
 
-    public function show(Items $item)
+    public function show($uuid)
     {
+        $item = Items::where('uuid', $uuid)->firstOrFail();
         $item->load(['area', 'itemType', 'user', 'amenities', 'attractions']);
         
         return Inertia::render('Items/Show', [
@@ -119,8 +122,9 @@ class ItemController extends Controller
         ]);
     }
 
-    public function edit(Items $item)
+    public function edit($uuid)
     {
+        $item = Items::where('uuid', $uuid)->firstOrFail();
         $item->load(['amenities', 'attractions']);
         $areas = Areas::all();
         $itemTypes = ItemType::all();
@@ -136,7 +140,7 @@ class ItemController extends Controller
         ]);
     }
 
-    public function update(Request $request, Items $item)
+    public function update(Request $request, $uuid)
     {
         $request->validate([
             'title' => 'required|string|max:255',
@@ -149,8 +153,9 @@ class ItemController extends Controller
             'approximate_address' => 'required|string',
             'exact_address' => 'required|string',
             'description' => 'required|string',
+            'host_rules' => 'nullable|string',
             'minimum_nights' => 'required|integer|min:1',
-            'maximum_nights' => 'required|integer|min:1',
+            'maximum_nights' => 'required|integer|min:1|gte:minimum_nights',
             'amenities' => 'array',
             'amenities.*' => 'exists:amenities,id',
             'attractions' => 'array',
@@ -160,6 +165,7 @@ class ItemController extends Controller
             'attractions.*.duration_by_car' => 'required|integer|min:0',
         ]);
 
+        $item = Items::where('uuid', $uuid)->firstOrFail();
         $item->update([
             'title' => $request->title,
             'item_type_id' => $request->item_type_id,
@@ -171,6 +177,7 @@ class ItemController extends Controller
             'approximate_address' => $request->approximate_address,
             'exact_address' => $request->exact_address,
             'description' => $request->description,
+            'host_rules' => $request->host_rules,
             'minimum_nights' => $request->minimum_nights,
             'maximum_nights' => $request->maximum_nights,
             'attributes' => json_encode($request->get('attributes', [])),
@@ -206,8 +213,9 @@ class ItemController extends Controller
         return redirect()->route('dashboard')->with('success', 'Item updated successfully!');
     }
 
-    public function destroy(Items $item)
+    public function destroy($uuid)
     {
+        $item = Items::where('uuid', $uuid)->firstOrFail();
         $item->delete();
         
         return redirect()->route('dashboard')->with('success', 'Item deleted successfully!');

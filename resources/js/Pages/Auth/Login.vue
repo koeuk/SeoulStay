@@ -1,5 +1,8 @@
 <template>
-    <div class="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div class="min-h-screen flex items-center justify-center" style="background: linear-gradient(135deg, #1a4a3a 0%, #0f2b24 100%); background-image: 
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), 
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); 
+        background-size: 50px 50px;">
         <div class="bg-white border-4 border-black p-8 w-full max-w-2xl">
             <!-- Header -->
             <div class="border-2 border-black mb-6 p-2">
@@ -23,7 +26,7 @@
                                 v-model="form.employee"
                                 type="text" 
                                 class="w-full border-2 border-black p-2"
-                                required
+                                placeholder="Optional"
                             />
                         </div>
                         <div class="flex flex-col justify-end space-y-2">
@@ -82,7 +85,7 @@
                         </button>
                         <button 
                             type="button"
-                            class="bg-gray-300 border-2 border-black px-6 py-2 hover:bg-gray-400"
+                            class="bg-red-600 text-white border-2 border-black px-6 py-2 hover:bg-red-700"
                             @click="$inertia.visit('/')"
                         >
                             🚪 Exit

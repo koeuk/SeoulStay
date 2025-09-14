@@ -25,7 +25,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/search', [DashboardController::class, 'search'])->name('dashboard.search');
     
     // Items/Properties management
-    Route::resource('items', ItemController::class);
+    Route::get('/items', [ItemController::class, 'index'])->name('items.index');
+    Route::get('/items/create', [ItemController::class, 'create'])->name('items.create');
+    Route::post('/items', [ItemController::class, 'store'])->name('items.store');
+    Route::get('/items/{uuid}', [ItemController::class, 'show'])->name('items.show');
+    Route::get('/items/{uuid}/edit', [ItemController::class, 'edit'])->name('items.edit');
+    Route::put('/items/{uuid}', [ItemController::class, 'update'])->name('items.update');
+    Route::delete('/items/{uuid}', [ItemController::class, 'destroy'])->name('items.destroy');
     
     // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

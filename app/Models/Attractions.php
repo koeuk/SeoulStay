@@ -37,7 +37,7 @@ class Attractions extends Model
 
     public function items()
     {
-        return $this->belongsToMany(Items::class, 'item_attractions')
+        return $this->belongsToMany(Items::class, 'item_attractions', 'attraction_id', 'item_id')
             ->withPivot(['distance', 'duration_on_foot', 'duration_by_car'])
             ->withTimestamps();
     }

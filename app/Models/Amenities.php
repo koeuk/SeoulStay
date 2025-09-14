@@ -31,6 +31,6 @@ class Amenities extends Model
     // Relationships
     public function items()
     {
-        return $this->belongsToMany(Items::class, 'item_amenities');
+        return $this->belongsToMany(Items::class, 'item_amenities', 'amenity_id', 'item_id');
     }
 }

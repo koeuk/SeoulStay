@@ -15,36 +15,22 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $userType = $user->userType->name ?? 'Traveler';
         
-        $search = $request->get('search', '');
-        $tab = $request->get('tab', 'traveler');
+        // Get all items with relationships for traveler tab
+        $allItems = Items::with(['area', 'itemType', 'user', 'amenities', 'attractions'])
+            ->get();
         
-        $query = Items::with(['area', 'itemType', 'user'])
-            ->when($search, function ($q) use ($search) {
-                return $q->where('title', 'like', "%{$search}%")
-                    ->orWhereHas('area', function ($q) use ($search) {
-                        $q->where('name', 'like', "%{$search}%");
-                    })
-                    ->orWhereHas('attractions', function ($q) use ($search) {
-                        $q->where('name', 'like', "%{$search}%");
-                    });
-            });
-            
-        if ($tab === 'owner' || in_array($userType, ['Owner', 'Manager', 'Employee'])) {
-            $query->where('user_id', $user->id);
-        }
+        // Get user's own items for owner/manager tab
+        $userItems = Items::with(['area', 'itemType', 'amenities', 'attractions'])
+            ->where('user_id', $user->id)
+            ->get();
         
-        $items = $query->paginate(10);
-        $itemsCount = $query->count();
-        
-        return Inertia::render('Dashboard/Index', [
-            'items' => $items,
-            'itemsCount' => $itemsCount,
-            'search' => $search,
-            'tab' => $tab,
-            'userType' => $userType,
-            'user' => $user,
+        return Inertia::render('Dashboard', [
+            'items' => $allItems,
+            'userItems' => $userItems,
+            'auth' => [
+                'user' => $user
+            ]
         ]);
     }
     

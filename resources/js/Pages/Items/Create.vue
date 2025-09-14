@@ -1,5 +1,8 @@
 <template>
-    <div class="min-h-screen bg-gray-100 p-4">
+    <div class="min-h-screen p-4" style="background: linear-gradient(135deg, #1a4a3a 0%, #0f2b24 100%); background-image: 
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), 
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); 
+        background-size: 50px 50px;">
         <div class="bg-white border-4 border-black max-w-6xl mx-auto">
             <!-- Header -->
             <div class="border-b-2 border-black p-4">
@@ -44,7 +47,7 @@
                 <form @submit.prevent="submit">
                     <!-- Listing Details Tab -->
                     <div v-show="activeTab === 'details'" class="space-y-4">
-                        <div class="grid grid-cols-2 gap-4">
+                        <div class="grid grid-cols-3 gap-4">
                             <div>
                                 <label class="block text-sm font-medium mb-1">Type:</label>
                                 <select 
@@ -59,6 +62,22 @@
                                 </select>
                                 <div v-if="form.errors.item_type_id" class="text-red-600 text-sm mt-1">
                                     {{ form.errors.item_type_id }}
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Area:</label>
+                                <select 
+                                    v-model="form.area_id" 
+                                    class="w-full border-2 border-black p-2"
+                                    required
+                                >
+                                    <option value="">Select Area</option>
+                                    <option v-for="area in areas" :key="area.id" :value="area.id">
+                                        {{ area.name }}
+                                    </option>
+                                </select>
+                                <div v-if="form.errors.area_id" class="text-red-600 text-sm mt-1">
+                                    {{ form.errors.area_id }}
                                 </div>
                             </div>
                             <div>
@@ -227,30 +246,29 @@
                     
                     <!-- Amenities Tab -->
                     <div v-show="activeTab === 'amenities'" class="space-y-4">
-                        <h3 class="text-lg font-bold mb-4">Select Amenities</h3>
-                        <div class="grid grid-cols-3 gap-4">
-                            <label 
-                                v-for="amenity in amenities" 
-                                :key="amenity.id"
-                                class="flex items-center p-3 border-2 border-gray-300 hover:border-black cursor-pointer"
-                            >
-                                <input 
-                                    type="checkbox" 
-                                    :value="amenity.id"
-                                    v-model="form.amenities"
-                                    class="mr-3"
-                                />
-                                <div class="flex items-center">
-                                    <img 
-                                        v-if="amenity.icon_name" 
-                                        :src="`/icons/${amenity.icon_name}`" 
-                                        :alt="amenity.name"
-                                        class="w-6 h-6 mr-2"
-                                        @error="$event.target.style.display='none'"
+                        <h3 class="text-lg font-bold mb-4">Choose Available Amenities:</h3>
+                        
+                        <div class="border-2 border-black" style="width: 400px;">
+                            <div class="bg-gray-200 border-b-2 border-black p-2 flex justify-between items-center">
+                                <span class="font-medium">Amenity</span>
+                                <span class="text-xl">▲</span>
+                            </div>
+                            <div class="max-h-48 overflow-y-auto">
+                                <label 
+                                    v-for="amenity in amenities" 
+                                    :key="amenity.id"
+                                    class="flex items-center justify-between p-2 border-b border-gray-300 hover:bg-gray-50 cursor-pointer"
+                                    :class="{ 'bg-gray-100': form.amenities.includes(amenity.id) }"
+                                >
+                                    <span class="text-sm">{{ amenity.name }}</span>
+                                    <input 
+                                        type="checkbox" 
+                                        :value="amenity.id" 
+                                        v-model="form.amenities" 
+                                        class="w-4 h-4"
                                     />
-                                    <span>{{ amenity.name }}</span>
-                                </div>
-                            </label>
+                                </label>
+                            </div>
                         </div>
                     </div>
                     
@@ -312,6 +330,13 @@
             <!-- Action Buttons -->
             <div class="flex justify-end space-x-4 p-4">
                 <button 
+                    @click="$inertia.visit('/dashboard')"
+                    class="bg-red-600 text-white border-2 border-black px-6 py-2 hover:bg-red-700 mr-2"
+                    v-if="activeTab === 'details' || activeTab === 'amenities'"
+                >
+                    Cancel
+                </button>
+                <button 
                     @click="nextTab"
                     class="bg-gray-300 border-2 border-black px-6 py-2 hover:bg-gray-400"
                     v-if="activeTab !== 'attractions'"
@@ -323,7 +348,7 @@
                     class="bg-blue-500 text-white border-2 border-black px-6 py-2 hover:bg-blue-600"
                     :disabled="form.processing"
                 >
-                    {{ activeTab === 'attractions' ? 'Close / Finish' : 'Save' }}
+                    {{ activeTab === 'attractions' ? 'Finish' : 'Save' }}
                 </button>
             </div>
         </div>

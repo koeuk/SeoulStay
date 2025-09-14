@@ -13,7 +13,7 @@ class Items extends Model
 
     protected $fillable = [
         'uuid',
-                'user_id',
+        'user_id',
         'item_type_id',
         'area_id',
         'title',
@@ -24,6 +24,7 @@ class Items extends Model
         'exact_address',
         'approximate_address',
         'description',
+        'host_rules',
         'attributes',
         'minimum_nights',
         'maximum_nights'
@@ -62,12 +63,12 @@ class Items extends Model
 
     public function amenities()
     {
-        return $this->belongsToMany(Amenities::class, 'item_amenities');
+        return $this->belongsToMany(Amenities::class, 'item_amenities', 'item_id', 'amenity_id');
     }
 
     public function attractions()
     {
-        return $this->belongsToMany(Attractions::class, 'item_attractions')
+        return $this->belongsToMany(Attractions::class, 'item_attractions', 'item_id', 'attraction_id')
                     ->withPivot(['distance', 'duration_on_foot', 'duration_by_car'])
                     ->withTimestamps();
     }

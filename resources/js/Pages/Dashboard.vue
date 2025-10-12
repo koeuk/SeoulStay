@@ -12,13 +12,7 @@
                         <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
                         <p class="mt-2 text-gray-600">Manage your Seoul Stay properties and bookings</p>
                     </div>
-                    <div class="flex items-center space-x-4">
-                        <div class="text-right">
-                            <p class="text-sm text-gray-500">Welcome back</p>
-                            <p class="text-lg font-semibold text-gray-900">{{ auth.user?.name || auth.user?.username }}</p>
-                        </div>
-                        <img src="/seoul-station-logo.svg" alt="Seoul Station Logo" class="h-12 w-auto">
-                    </div>
+                    <img src="/seoul-station-logo.svg" alt="Seoul Station Logo" class="h-12 w-auto">
                 </div>
             </div>
 

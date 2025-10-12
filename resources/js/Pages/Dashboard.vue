@@ -13,6 +13,11 @@
                 <div class="border-b border-black p-4">
                     <h1 class="text-xl font-bold">Seoul Stay - Management Dashboard</h1>
                 </div>
+                <!-- Logo -->
+                <div class="flex justify-center py-4">
+                    <img src="/seoul-station-logo.svg" alt="Seoul Station Logo" class="h-16 w-auto">
+                </div>
+
 
                 <!-- Tab Navigation -->
                 <div class="border-b border-black p-4">

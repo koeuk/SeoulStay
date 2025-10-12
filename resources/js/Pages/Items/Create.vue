@@ -67,7 +67,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                 </svg>
-                                <span>Attractions</span>
+                                <span>Distance to Attraction</span>
                             </div>
                         </button>
                     </nav>
@@ -281,8 +281,8 @@
                         <div v-show="activeTab === 'amenities'" class="space-y-6">
                             <div class="flex items-center justify-between">
                                 <div>
-                                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Available Amenities</h3>
-                                    <p class="text-sm text-gray-600">Select all amenities that are available in your items</p>
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Choose Available Amenities</h3>
+                                    <p class="text-sm text-gray-600">Select all amenities that are available in your property</p>
                                 </div>
                                 <button @click="openAmenityModal"
                                     class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
@@ -317,7 +317,7 @@
                         <div v-show="activeTab === 'attractions'" class="space-y-6">
                             <div class="flex items-center justify-between">
                                 <div>
-                                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Nearby Attractions</h3>
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Distance to Attraction</h3>
                                     <p class="text-sm text-gray-600">Specify the distance and travel time to nearby attractions</p>
                                 </div>
                                 <button @click="openAttractionModal"
@@ -344,10 +344,10 @@
                                                 Distance (km)
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Walking (min)
+                                                On Foot (minutes)
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Driving (min)
+                                                By Car (minutes)
                                             </th>
                                         </tr>
                                     </thead>

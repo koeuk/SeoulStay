@@ -22,6 +22,24 @@
                                 :class="{ 'text-blue-600 bg-blue-50': $page.url.startsWith('/dashboard') }">
                             Dashboard
                             </Link>
+                            
+                            <Link :href="route('items.index')"
+                                class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                                :class="{ 'text-blue-600 bg-blue-50': $page.url.startsWith('/items') }">
+                            Properties
+                            </Link>
+                            
+                            <Link :href="route('amenities.index')"
+                                class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                                :class="{ 'text-blue-600 bg-blue-50': $page.url.startsWith('/amenities') }">
+                            Amenities
+                            </Link>
+                            
+                            <Link :href="route('attractions.index')"
+                                class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                                :class="{ 'text-blue-600 bg-blue-50': $page.url.startsWith('/attractions') }">
+                            Attractions
+                            </Link>
 
                             <div class="relative group">
                                 <button
@@ -95,6 +113,18 @@
                         class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
                         @click="mobileMenuOpen = false">
                     Properties
+                    </Link>
+
+                    <Link :href="route('amenities.index')"
+                        class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
+                        @click="mobileMenuOpen = false">
+                    Amenities
+                    </Link>
+
+                    <Link :href="route('attractions.index')"
+                        class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
+                        @click="mobileMenuOpen = false">
+                    Attractions
                     </Link>
 
                     <Link :href="route('profile.edit')"

@@ -4,6 +4,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AmenitiesController;
+use App\Http\Controllers\AttractionsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -32,6 +34,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/items/{uuid}/edit', [ItemController::class, 'edit'])->name('items.edit');
     Route::put('/items/{uuid}', [ItemController::class, 'update'])->name('items.update');
     Route::delete('/items/{uuid}', [ItemController::class, 'destroy'])->name('items.destroy');
+    
+    // Amenities management
+    Route::resource('amenities', AmenitiesController::class);
+    
+    // Attractions management
+    Route::resource('attractions', AttractionsController::class);
     
     // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

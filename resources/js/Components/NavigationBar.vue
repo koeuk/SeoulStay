@@ -1,14 +1,14 @@
 <template>
-    <nav class="bg-gray-900 border-b-4 border-black shadow-lg">
-        <div class="max-w-7xl mx-auto px-4">
+    <nav class="bg-white border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo Section -->
                 <div class="flex items-center">
-                    <Link  class="flex items-center">
-                    <div
-                        class=" text-white  px-4 py-2 rounded font-bold text-lg ">
-                        Seoul Stay
-                    </div>
+                    <Link :href="route('dashboard')" class="flex items-center space-x-3">
+                        <img src="/seoul-station-logo.svg" alt="Seoul Stay" class="h-8 w-auto">
+                        <div class="text-gray-900 font-bold text-xl">
+                            Seoul Stay
+                        </div>
                     </Link>
                 </div>
 
@@ -18,14 +18,14 @@
 
                         <template v-if="$page.props.auth.user">
                             <Link :href="route('dashboard')"
-                                class="text-white hover:text-purple-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                                :class="{ 'text-purple-400 bg-gray-800': $page.url.startsWith('/dashboard') }">
+                                class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                                :class="{ 'text-blue-600 bg-blue-50': $page.url.startsWith('/dashboard') }">
                             Dashboard
                             </Link>
 
                             <div class="relative group">
                                 <button
-                                    class="text-white hover:text-purple-400 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center">
+                                    class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center">
                                     {{ $page.props.auth.user.name || $page.props.auth.user.username }}
                                     <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd"
@@ -34,13 +34,13 @@
                                     </svg>
                                 </button>
                                 <div
-                                    class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border-2 border-gray-300">
+                                    class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-200">
                                     <Link :href="route('profile.edit')"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
                                     Profile Settings
                                     </Link>
                                     <Link :href="route('logout')" method="post" as="button"
-                                        class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                        class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
                                     Sign Out
                                     </Link>
                                 </div>
@@ -49,13 +49,13 @@
 
                         <template v-else>
                             <Link :href="route('login')"
-                                class="text-white hover:text-purple-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                                :class="{ 'text-purple-400 bg-gray-800': $page.url === '/login' }">
+                                class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                                :class="{ 'text-blue-600 bg-blue-50': $page.url === '/login' }">
                             Login
                             </Link>
 
                             <Link :href="route('register')"
-                                class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors border-2 border-purple-500">
+                                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
                             Register
                             </Link>
                         </template>
@@ -65,7 +65,7 @@
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
                     <button @click="mobileMenuOpen = !mobileMenuOpen"
-                        class="text-white hover:text-purple-400 p-2 rounded-md">
+                        class="text-gray-700 hover:text-blue-600 p-2 rounded-md">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 6h16M4 12h16M4 18h16"></path>
@@ -76,35 +76,35 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div v-show="mobileMenuOpen" class="md:hidden bg-gray-800 border-t border-gray-700">
+        <div v-show="mobileMenuOpen" class="md:hidden bg-white border-t border-gray-200">
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <Link :href="route('home')"
-                    class="text-white hover:text-purple-400 block px-3 py-2 rounded-md text-base font-medium"
+                    class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
                     @click="mobileMenuOpen = false">
                 Main Page
                 </Link>
 
                 <template v-if="$page.props.auth.user">
                     <Link :href="route('dashboard')"
-                        class="text-white hover:text-purple-400 block px-3 py-2 rounded-md text-base font-medium"
+                        class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
                         @click="mobileMenuOpen = false">
                     Dashboard
                     </Link>
 
                     <Link :href="route('items.index')"
-                        class="text-white hover:text-purple-400 block px-3 py-2 rounded-md text-base font-medium"
+                        class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
                         @click="mobileMenuOpen = false">
                     Properties
                     </Link>
 
                     <Link :href="route('profile.edit')"
-                        class="text-white hover:text-purple-400 block px-3 py-2 rounded-md text-base font-medium"
+                        class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
                         @click="mobileMenuOpen = false">
                     Profile Settings
                     </Link>
 
                     <Link :href="route('logout')" method="post" as="button"
-                        class="text-white hover:text-purple-400 block w-full text-left px-3 py-2 rounded-md text-base font-medium"
+                        class="text-gray-700 hover:text-blue-600 block w-full text-left px-3 py-2 rounded-md text-base font-medium"
                         @click="mobileMenuOpen = false">
                     Sign Out
                     </Link>
@@ -112,13 +112,13 @@
 
                 <template v-else>
                     <Link :href="route('login')"
-                        class="text-white hover:text-purple-400 block px-3 py-2 rounded-md text-base font-medium"
+                        class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
                         @click="mobileMenuOpen = false">
                     Login
                     </Link>
 
                     <Link :href="route('register')"
-                        class="text-white hover:text-purple-400 block px-3 py-2 rounded-md text-base font-medium"
+                        class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
                         @click="mobileMenuOpen = false">
                     Register
                     </Link>

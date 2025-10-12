@@ -23,11 +23,11 @@
                             Dashboard
                             </Link>
                             
-                            <Link :href="route('items.index')"
-                                class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                                :class="{ 'text-blue-600 bg-blue-50': $page.url.startsWith('/items') }">
-                            Properties
-                            </Link>
+                            <!-- <Link :href="route('items.index')" -->
+                                <!-- class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" -->
+                                <!-- :class="{ 'text-blue-600 bg-blue-50': $page.url.startsWith('/items') }"> -->
+                            <!-- Properties -->
+                            <!-- </Link> -->
                             
                             <Link :href="route('amenities.index')"
                                 class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"

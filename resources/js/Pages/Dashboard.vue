@@ -10,7 +10,7 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
-                        <p class="mt-2 text-gray-600">Manage your Seoul Stay properties and bookings</p>
+                        <p class="mt-2 text-gray-600">Manage your Seoul Stay Items</p>
                     </div>
                     <img src="/seoul-station-logo.svg" alt="Seoul Station Logo" class="h-12 w-auto">
                 </div>
@@ -77,7 +77,7 @@
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                 </svg>
-                                <span>Browse Properties</span>
+                                <span>I'm Traveler</span>
                             </div>
                         </button>
                         <button @click="activeTab = 'owner'" 
@@ -91,7 +91,7 @@
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                                 </svg>
-                                <span>Manage My Properties</span>
+                                <span>I'm Owner / Manager</span>
                             </div>
                         </button>
                     </nav>
@@ -122,7 +122,7 @@
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                                 </svg>
-                                Add New Property
+                                Add Listing
                             </button>
                         </div>
                         
@@ -146,7 +146,7 @@
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
                                                 @click="sortBy('title')">
                                                 <div class="flex items-center space-x-1">
-                                                    <span>Property</span>
+                                                    <span>Title</span>
                                                     <svg v-if="sortField === 'title'" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                                         <path v-if="sortDirection === 'asc'" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
                                                         <path v-else d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"/>
@@ -363,7 +363,7 @@
                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                                     </svg>
-                                    Add New Property
+                                    Add Listing
                                 </button>
                             </div>
                         </div>

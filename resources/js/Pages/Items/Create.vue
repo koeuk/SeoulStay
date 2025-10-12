@@ -9,8 +9,8 @@
             <div class="mb-8">
                 <div class="flex items-center justify-between">
                     <div>
-                        <h1 class="text-3xl font-bold text-gray-900">Add New Property</h1>
-                        <p class="mt-2 text-gray-600">Create a new property listing for Seoul Stay</p>
+                        <h1 class="text-3xl font-bold text-gray-900">Add New Items</h1>
+                        <p class="mt-2 text-gray-600">Create a new Items listing for Seoul Stay</p>
                     </div>
                     <img src="/seoul-station-logo.svg" alt="Seoul Station Logo" class="h-12 w-auto">
                 </div>
@@ -20,8 +20,8 @@
             <div class="bg-white rounded-lg shadow-sm border border-gray-200">
                 <!-- Header -->
                 <div class="px-6 py-4 border-b border-gray-200">
-                    <h2 class="text-lg font-semibold text-gray-900">Property Information</h2>
-                    <p class="text-sm text-gray-600 mt-1">Fill in the details below to create your property listing</p>
+                    <h2 class="text-lg font-semibold text-gray-900">items Information</h2>
+                    <p class="text-sm text-gray-600 mt-1">Fill in the details below to create your items listing</p>
                 </div>
 
                 <!-- Tab Navigation -->
@@ -38,7 +38,7 @@
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                                 </svg>
-                                <span>Property Details</span>
+                                <span>Listing Details</span>
                             </div>
                         </button>
                         <button @click="activeTab = 'amenities'" 
@@ -81,11 +81,11 @@
                             <!-- Basic Information -->
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Property Type *</label>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2"> Type *</label>
                                     <select v-model="form.item_type_id" 
                                         class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                                         required>
-                                        <option value="">Select Property Type</option>
+                                        <option value="">Select Type</option>
                                         <option v-for="type in itemTypes" :key="type.id" :value="type.id">
                                             {{ type.name }}
                                         </option>
@@ -109,10 +109,10 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Property Title *</label>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Title *</label>
                                     <input v-model="form.title" type="text" 
                                         class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                        placeholder="Enter property title"
+                                        placeholder="Enter title"
                                         required />
                                     <div v-if="form.errors.title" class="mt-1 text-sm text-red-600">
                                         {{ form.errors.title }}
@@ -120,7 +120,7 @@
                                 </div>
                             </div>
 
-                            <!-- Property Details -->
+                            <!-- item Details -->
                             <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Guest Capacity *</label>
@@ -219,10 +219,10 @@
 
                             <!-- Description -->
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Property Description *</label>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">item Description *</label>
                                 <textarea v-model="form.description" rows="4"
                                     class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                    placeholder="Describe your property, its features, and what makes it special..."
+                                    placeholder="Describe your item, its features, and what makes it special..."
                                     required></textarea>
                                 <div v-if="form.errors.description" class="mt-1 text-sm text-red-600">
                                     {{ form.errors.description }}
@@ -282,16 +282,16 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Available Amenities</h3>
-                                    <p class="text-sm text-gray-600">Select all amenities that are available in your property</p>
+                                    <p class="text-sm text-gray-600">Select all amenities that are available in your items</p>
                                 </div>
-                                <Link :href="route('amenities.index')"
+                                <button @click="openAmenityModal"
                                     class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                     </svg>
                                     Manage Amenities
-                                </Link>
+                                </button>
                             </div>
 
                             <div class="border border-gray-200 rounded-lg overflow-hidden">
@@ -320,14 +320,14 @@
                                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Nearby Attractions</h3>
                                     <p class="text-sm text-gray-600">Specify the distance and travel time to nearby attractions</p>
                                 </div>
-                                <Link :href="route('attractions.index')"
+                                <button @click="openAttractionModal"
                                     class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                     </svg>
                                     Manage Attractions
-                                </Link>
+                                </button>
                             </div>
 
                             <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg">
@@ -415,19 +415,38 @@
                             <svg v-else class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
-                            {{ activeTab === 'attractions' ? 'Create Property' : 'Save & Continue' }}
+                            {{ activeTab === 'attractions' ? 'Create item' : 'Save & Continue' }}
                         </button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Amenity Modal -->
+        <AmenityModal 
+            :show="showAmenityModal" 
+            :amenity="selectedAmenity"
+            @close="closeAmenityModal"
+            @saved="onAmenitySaved"
+        />
+
+        <!-- Attraction Modal -->
+        <AttractionModal 
+            :show="showAttractionModal" 
+            :attraction="selectedAttraction"
+            :areas="areas"
+            @close="closeAttractionModal"
+            @saved="onAttractionSaved"
+        />
     </div>
 </template>
 
 <script setup>
-    import { ref, reactive } from 'vue'
-    import { useForm } from '@inertiajs/vue3'
-    import NavigationBar from '@/Components/NavigationBar.vue'
+import { ref, reactive } from 'vue'
+import { useForm, router } from '@inertiajs/vue3'
+import NavigationBar from '@/Components/NavigationBar.vue'
+import AmenityModal from '@/Components/AmenityModal.vue'
+import AttractionModal from '@/Components/AttractionModal.vue'
 
     const props = defineProps({
         areas: Array,
@@ -437,6 +456,12 @@
     })
 
     const activeTab = ref('details')
+
+    // Modal states
+    const showAmenityModal = ref(false)
+    const showAttractionModal = ref(false)
+    const selectedAmenity = ref(null)
+    const selectedAttraction = ref(null)
 
     const form = useForm({
         title: '',
@@ -500,5 +525,34 @@
         )
 
         form.post(route('items.store'))
+    }
+
+    // Modal functions
+    const openAmenityModal = () => {
+        selectedAmenity.value = null
+        showAmenityModal.value = true
+    }
+
+    const closeAmenityModal = () => {
+        showAmenityModal.value = false
+        selectedAmenity.value = null
+    }
+
+    const onAmenitySaved = () => {
+        router.reload({ only: ['amenities'] })
+    }
+
+    const openAttractionModal = () => {
+        selectedAttraction.value = null
+        showAttractionModal.value = true
+    }
+
+    const closeAttractionModal = () => {
+        showAttractionModal.value = false
+        selectedAttraction.value = null
+    }
+
+    const onAttractionSaved = () => {
+        router.reload({ only: ['attractions'] })
     }
 </script>
